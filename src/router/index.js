@@ -12,6 +12,11 @@ const routes = [
     component: () => import('../components/PageThreadShow.vue'),
     props: true,
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../components/PageNotFound.vue'),
+  },
 ];
 
 const router = createRouter({
