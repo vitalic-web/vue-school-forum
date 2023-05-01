@@ -17,5 +17,6 @@ module.exports = {
     'vuejs-accessibility/anchor-has-content': 'off',
     'consistent-return': 'off',
     'vue/multi-word-component-names': 'off',
+    'vuejs-accessibility/form-control-has-label': 'off',
   },
 };
