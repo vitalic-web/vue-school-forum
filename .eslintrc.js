@@ -16,5 +16,6 @@ module.exports = {
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'vuejs-accessibility/anchor-has-content': 'off',
     'consistent-return': 'off',
+    'vue/multi-word-component-names': 'off',
   },
 };
