@@ -2,10 +2,13 @@
   <div class="col-full">
     <div class="thread-list">
       <h2 class="list-title">Threads</h2>
+      <!--   TODO: Create a thread component   -->
       <div v-for="thread in threads" :key="thread.id" class="thread">
         <div>
           <p>
-            <a href="#">{{ thread.title }}</a>
+            <router-link :to="{ name: 'ThreadShow', params: { id: thread.id } }">
+              {{ thread.title }}
+            </router-link>
           </p>
           <p class="text-faded text-xsmall">
             By <a href="#">{{ userById(thread.userId).name }}</a>, {{ thread.publishedAt }}.
