@@ -29,7 +29,6 @@
 <script setup>
 import { ref } from 'vue';
 import sourceData from '@/data.json';
-import AppDate from '@/components/AppDate.vue';
 
 defineProps({
   posts: {
