@@ -20,15 +20,19 @@
         </div>
       </div>
       <div class="post-date text-faded">
-        {{ post.publishedAt }}
+        {{ diffForHumans(post.publishedAt) }}
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import sourceData from '@/data.json';
 import { ref } from 'vue';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import sourceData from '@/data.json';
+
+dayjs.extend(relativeTime);
 
 defineProps({
   posts: {
@@ -39,6 +43,8 @@ defineProps({
 
 const users = ref(sourceData.users);
 const userById = (userId) => users.value.find((u) => u.id === userId);
+
+const diffForHumans = (timestamp) => dayjs.unix(timestamp).fromNow();
 </script>
 
 <style scoped>
