@@ -1,15 +1,12 @@
 <template>
   <h1>Welcome to the Forum</h1>
-  <ThreadList :threads="threads" />
+  <ForumList :forums="forums" />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import sourceData from '@/data.json';
-import ThreadList from '@/components/ThreadList.vue';
+import ForumList from '@/components/ForumList.vue';
 
-const threads = ref(sourceData.threads);
+const forums = ref(sourceData.forums);
 </script>
-
-<style scoped>
-</style>
