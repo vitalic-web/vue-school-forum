@@ -34,8 +34,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import sourceData from '@/data.json';
+import { storeToRefs } from 'pinia';
+import usePostsStore from '@/stores/PostsStore';
+import useUsersStore from '@/stores/UsersStore';
 
 defineProps({
   threads: {
@@ -44,8 +45,8 @@ defineProps({
   },
 });
 
-const posts = ref(sourceData.posts);
-const users = ref(sourceData.users);
+const { posts } = storeToRefs(usePostsStore());
+const { users } = storeToRefs(useUsersStore());
 
 const postById = (postId) => posts.value.find((p) => p.id === postId);
 const userById = (userId) => users.value.find((u) => u.id === userId);

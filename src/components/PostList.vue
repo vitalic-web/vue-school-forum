@@ -27,8 +27,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import sourceData from '@/data.json';
+import { storeToRefs } from 'pinia';
+import useUsersStore from '@/stores/UsersStore';
 
 defineProps({
   posts: {
@@ -37,7 +37,7 @@ defineProps({
   },
 });
 
-const users = ref(sourceData.users);
+const { users } = storeToRefs(useUsersStore());
 const userById = (userId) => users.value.find((u) => u.id === userId);
 </script>
 
