@@ -7,8 +7,10 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import sourceData from '@/data.json';
+import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import useThreadsStore from '@/stores/ThreadsStore';
+import usePostsStore from '@/stores/PostsStore';
 import PostList from '@/components/PostList.vue';
 import PostEditor from '@/components/PostEditor.vue';
 
@@ -19,8 +21,10 @@ const props = defineProps({
   },
 });
 
-const threads = ref(sourceData.threads);
-const posts = ref(sourceData.posts);
+const postsStore = usePostsStore();
+
+const { threads } = storeToRefs(useThreadsStore());
+const { posts } = storeToRefs(postsStore);
 
 // props.id also available under route.params.id
 const thread = computed(() => threads.value.find((t) => t.id === props.id));
@@ -31,7 +35,6 @@ const addPost = (eventData) => {
     ...eventData.post,
     threadId: props.id,
   };
-  posts.value.push(post);
-  thread.value.posts.push(post.id);
+  postsStore.createPost(post);
 };
 </script>
