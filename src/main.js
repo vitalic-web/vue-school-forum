@@ -1,11 +1,13 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
-import store from './store';
 
 const forumApp = createApp(App);
-forumApp.use(store);
+const pinia = createPinia();
+
 forumApp.use(router);
+forumApp.use(pinia);
 
 const requireComponent = require.context('./components', true, /App[A-Z]\w+\.(vue|js)$/);
 requireComponent.keys().forEach((fileName) => {
