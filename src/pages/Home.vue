@@ -4,9 +4,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import sourceData from '@/data.json';
+import { storeToRefs } from 'pinia';
+import useCategoriesStore from '@/stores/CategoriesStore';
 import CategoryList from '@/components/CategoryList.vue';
 
-const categories = ref(sourceData.categories);
+const { categories } = storeToRefs(useCategoriesStore());
 </script>
