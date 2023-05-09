@@ -8,7 +8,9 @@
 
 <script setup>
 import { computed } from 'vue';
-import sourceData from '@/data.json';
+import { storeToRefs } from 'pinia';
+import useCategoriesStore from '@/stores/CategoriesStore';
+import useForumsStore from '@/stores/ForumsStore';
 import ForumList from '@/components/ForumList.vue';
 
 const props = defineProps({
@@ -18,8 +20,11 @@ const props = defineProps({
   },
 });
 
-const category = computed(() => sourceData.categories.find((cat) => cat.id === props.id));
+const { categories } = storeToRefs(useCategoriesStore());
+const { forums } = storeToRefs(useForumsStore());
 
-const getForumsForCategory = (categoryItem) => sourceData.forums
+const category = computed(() => categories.value.find((cat) => cat.id === props.id));
+
+const getForumsForCategory = (categoryItem) => forums.value
   .filter((forum) => forum.categoryId === categoryItem.id);
 </script>

@@ -9,7 +9,8 @@
 </template>
 
 <script setup>
-import sourceData from '@/data.json';
+import { storeToRefs } from 'pinia';
+import useForumsStore from '@/stores/ForumsStore';
 import ForumList from '@/components/ForumList.vue';
 
 defineProps({
@@ -19,6 +20,8 @@ defineProps({
   },
 });
 
-const getForumsForCategory = (category) => sourceData.forums
+const { forums } = storeToRefs(useForumsStore());
+
+const getForumsForCategory = (category) => forums.value
   .filter((forum) => forum.categoryId === category.id);
 </script>
