@@ -19,5 +19,6 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vuejs-accessibility/form-control-has-label': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'no-param-reassign': 'off',
   },
 };
