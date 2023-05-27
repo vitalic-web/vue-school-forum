@@ -17,11 +17,15 @@
       <ul>
         <li class="navbar-user">
           <a href="#">
-            <img class="avatar-small" src="https://pbs.twimg.com/profile_images/1188775562657091594/5mgkg44t_400x400.jpg" alt="">
+            <img
+              class="avatar-small"
+              :src="authUser.avatar"
+              :alt="`${authUser.name} profile picture`"
+            >
             <span>
-                        Alex Kyriakidis
-                        <img class="icon-profile" src="../assets/svg/arrow-profile.svg" alt="">
-                    </span>
+              {{ authUser.name }}
+              <img class="icon-profile" src="../assets/svg/arrow-profile.svg" alt="">
+            </span>
           </a>
 
           <!-- dropdown menu -->
@@ -59,3 +63,11 @@
     </nav>
   </header>
 </template>
+
+<script setup>
+import { storeToRefs } from 'pinia';
+import useAuthStore from '@/stores/AuthStore';
+
+const { authUser } = storeToRefs(useAuthStore());
+console.log('authUser', authUser.value);
+</script>
