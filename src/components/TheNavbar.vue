@@ -66,8 +66,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-import useAuthStore from '@/stores/AuthStore';
+import useUserInfoStore from '@/stores/UserInfoStore';
 
-const { authUser } = storeToRefs(useAuthStore());
-console.log('authUser', authUser.value);
+const { authUser } = storeToRefs(useUserInfoStore());
 </script>
