@@ -74,7 +74,7 @@
         </label>
       </div>
       <div class="btn-group space-between">
-        <button class="btn-ghost">Cancel</button>
+        <button class="btn-ghost" @click="cancel">Cancel</button>
         <button type="submit" class="btn-blue">Save</button>
       </div>
     </form>
@@ -83,6 +83,7 @@
 
 <script setup>
 import { toRefs, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import useUsersStore from '@/stores/UsersStore';
 
 const props = defineProps({
@@ -94,9 +95,14 @@ const props = defineProps({
 
 const { user } = toRefs(props);
 const activeUser = ref({ ...user.value });
+const router = useRouter();
 
 const { updateUser } = useUsersStore();
+
 const save = () => {
   updateUser({ ...activeUser.value });
+  router.push({ name: 'Profile' });
 };
+
+const cancel = () => router.push({ name: 'Profile' });
 </script>
