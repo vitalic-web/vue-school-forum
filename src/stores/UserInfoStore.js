@@ -1,5 +1,7 @@
 import { defineStore, storeToRefs } from 'pinia';
 import useUsersStore from '@/stores/UsersStore';
+// TODO: fix it authId in another store
+// eslint-disable-next-line import/no-cycle
 import usePostsStore from '@/stores/PostsStore';
 import useThreadsStore from '@/stores/ThreadsStore';
 
